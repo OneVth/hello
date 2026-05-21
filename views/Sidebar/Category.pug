@@ -9,12 +9,71 @@ script.
     foldableCategory: skinOptions.foldableCategory,
 
     /**
+     * Section map (Section name → category slugs)
+     *
+     * @var {Object.<string, string[]>}
+     */
+    sectionMap: {
+      'Development':      ['Embedded', 'Language', 'Web'],
+      'Computer Science': ['OS', 'Network', 'Algorithm'],
+      'Tools & Infra':    ['DevTools', 'Infra', 'Cloud'],
+      'Works':            ['Projects', 'Experience', '블로그'],
+      '취미':             ['Coffee', 'Motion']
+    },
+
+    /**
      * Init
      */
     init () {
+      this.sectionLayer()
+
       if (this.foldableCategory) {
         this.$subCategories.forEach(this.foldable.bind(this))
       }
+    },
+
+    /**
+     * Insert section headers between top-level category items
+     */
+    sectionLayer () {
+      const $list = this.$categoryList
+
+      if (!$list) return
+
+      let prevSection = null
+
+      Array.from($list.children).forEach($li => {
+        const $link = $li.querySelector('.link_item')
+
+        if (!$link) return
+
+        const slug = decodeURIComponent($link.getAttribute('href').split('/').pop())
+        const section = this.findSection(slug)
+
+        if (section && section !== prevSection) {
+          const $header = document.createElement('li')
+
+          $header.classList.add('section-header')
+          $header.textContent = section
+          $header.setAttribute('aria-hidden', 'true')
+
+          $list.insertBefore($header, $li)
+          prevSection = section
+        }
+      })
+    },
+
+    /**
+     * Find section name for a category slug
+     *
+     * @param {String} slug
+     * @returns {String|null}
+     */
+    findSection (slug) {
+      for (const section in this.sectionMap) {
+        if (this.sectionMap[section].includes(slug)) return section
+      }
+      return null
     },
 
     /**
@@ -33,6 +92,15 @@ script.
       $icon.setAttribute(':class', '{ "rotate-90 duration-200": open }')
 
       $subCategory.parentNode.prepend($icon)
+    },
+
+    /**
+     * Get the top-level category list
+     *
+     * @var {HTMLElement|null} $categoryList
+     */
+    get $categoryList () {
+      return this.$el.querySelector('.tt_category > li > .category_list')
     },
 
     /**
@@ -98,6 +166,15 @@ style
               @apply relative -top-0.5 mr-1 fa-chevron-right text-2xs font-bold text-h-400;
             }
           }
+        }
+
+        .section-header {
+          @apply text-xs font-semibold tracking-wider text-h-500 dark:text-h-400;
+          @apply mt-6 mb-2 pointer-events-none;
+        }
+
+        .section-header:first-child {
+          @apply mt-0;
         }
       }
     }
