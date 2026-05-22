@@ -19,6 +19,7 @@ html#hELLO(
     link(rel='stylesheet' :href='"//fonts.googleapis.com/css2?family=Source+Code+Pro:ital@0;1&display=swap"')
     link(rel='stylesheet' :href='"//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"')
     link(rel='stylesheet' :href='`//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/${dark ? skinOptions.hljsDark : skinOptions.hljs}.min.css`')
+    link(rel='stylesheet' :href='"//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css"')
 
     script(src='./images/bootstrap.js')
 
@@ -53,22 +54,8 @@ html#hELLO(
         headerStyle: '[##_var_header-style_##]'
       }
 
-    script(fixed).
-      window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          displayMath: [['$$', '$$'], ['\\[', '\\]']],
-          processEscapes: true
-        },
-        svg: {
-          fontCache: 'global'
-        },
-        options: {
-          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      }
-
-    script(async src='//cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js')
 
   body(
     id='[##_body_id_##]'

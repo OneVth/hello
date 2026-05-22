@@ -32,17 +32,26 @@ script(once='alpine-article-component').
       this.highlightCodeBlocks()
       this.addBlankHashToMoreLesses()
       this.setPositionToImages()
-      this.typesetMath()
+      this.renderMath()
     },
 
     /**
-     * Typeset math in article
+     * Render math in article
      */
-    typesetMath () {
-      if (typeof MathJax === 'undefined' || !MathJax.typesetPromise) return
-      MathJax.typesetPromise([this.$article]).then(() => {
-        window.dispatchEvent(new Event('scroll'))
+    renderMath () {
+      if (typeof renderMathInElement === 'undefined') return
+      renderMathInElement(this.$article, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false,
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        ignoredClasses: ['hljs', 'language-*']
       })
+      window.dispatchEvent(new Event('scroll'))
     },
 
     /**

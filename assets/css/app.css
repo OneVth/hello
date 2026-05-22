@@ -139,3 +139,26 @@
     @apply animate-none bg-h-100;
   }
 }
+
+/* KaTeX integration */
+.katex {
+  font-size: 1.05em;
+  line-height: normal;
+}
+
+.katex-display {
+  margin: 1em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.dark .katex,
+.dark .katex .mord,
+.dark .katex .mop,
+.dark .katex .mbin,
+.dark .katex .mrel,
+.dark .katex .mopen,
+.dark .katex .mclose,
+.dark .katex .mpunct {
+  color: inherit;
+}
