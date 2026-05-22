@@ -40,7 +40,9 @@ script(once='alpine-article-component').
      */
     typesetMath () {
       if (typeof MathJax === 'undefined' || !MathJax.typesetPromise) return
-      MathJax.typesetPromise([this.$article])
+      MathJax.typesetPromise([this.$article]).then(() => {
+        window.dispatchEvent(new Event('scroll'))
+      })
     },
 
     /**
