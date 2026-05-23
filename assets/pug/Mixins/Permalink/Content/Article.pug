@@ -200,7 +200,103 @@ style(once='article')
             }
           }
         }
+
+        /* callout palette (Obsidian flexcyon) */
+        --co-blue:   92, 159, 228;
+        --co-cyan:   59, 155, 161;
+        --co-green:  104, 149, 35;
+        --co-orange: 237, 129, 38;
+        --co-red:    235, 83, 87;
+        --co-purple: 111, 73, 174;
+        --co-gray:   158, 158, 158;
+
+        blockquote.markdown-callout {
+          @apply my-4 font-sans text-base font-normal;
+          padding: 12px 24px;
+          border-radius: 2px;
+          border-left: 4px solid rgb(var(--co-blue));
+          background-color: rgba(var(--co-blue), 0.1);
+          line-height: 1.75;
+
+          .callout-title {
+            @apply font-bold text-base;
+            color: rgb(var(--co-blue));
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 0.25em;
+
+            &::before {
+              @apply font-awesome font-bold;
+              content: '\f303';
+              width: 1.2em;
+              text-align: center;
+            }
+          }
+
+          p:not(.callout-title) {
+            @apply text-h-600 dark:text-h-200;
+            margin: 0.25em 0;
+          }
+        }
+
+        blockquote.markdown-callout-note {
+          border-left-color: rgb(var(--co-blue));
+          background-color: rgba(var(--co-blue), 0.1);
+          .callout-title { color: rgb(var(--co-blue)); &::before { content: '\f303'; } }
+        }
+
+        blockquote.markdown-callout-tip {
+          border-left-color: rgb(var(--co-cyan));
+          background-color: rgba(var(--co-cyan), 0.1);
+          .callout-title { color: rgb(var(--co-cyan)); &::before { content: '\f0eb'; } }
+        }
+
+        blockquote.markdown-callout-important {
+          border-left-color: rgb(var(--co-cyan));
+          background-color: rgba(var(--co-cyan), 0.1);
+          .callout-title { color: rgb(var(--co-cyan)); &::before { content: '\f06a'; } }
+        }
+
+        blockquote.markdown-callout-warning {
+          border-left-color: rgb(var(--co-orange));
+          background-color: rgba(var(--co-orange), 0.1);
+          .callout-title { color: rgb(var(--co-orange)); &::before { content: '\f071'; } }
+        }
+
+        blockquote.markdown-callout-danger {
+          border-left-color: rgb(var(--co-red));
+          background-color: rgba(var(--co-red), 0.1);
+          .callout-title { color: rgb(var(--co-red)); &::before { content: '\f06d'; } }
+        }
+
+        blockquote.markdown-callout-example {
+          border-left-color: rgb(var(--co-purple));
+          background-color: rgba(var(--co-purple), 0.1);
+          .callout-title { color: rgb(var(--co-purple)); &::before { content: '\f0c3'; } }
+        }
+
+        blockquote.markdown-callout-success {
+          border-left-color: rgb(var(--co-green));
+          background-color: rgba(var(--co-green), 0.1);
+          .callout-title { color: rgb(var(--co-green)); &::before { content: '\f058'; } }
+        }
+
+        blockquote.markdown-callout-quote {
+          border-left-color: rgb(var(--co-gray));
+          background-color: rgba(var(--co-gray), 0.1);
+          .callout-title { color: rgb(var(--co-gray)); &::before { content: '\f10d'; } }
+        }
       }
+    }
+
+    html.dark #article .contents_style {
+      --co-blue:   90, 143, 205;
+      --co-cyan:   60, 185, 194;
+      --co-green:  161, 192, 92;
+      --co-orange: 204, 132, 73;
+      --co-red:    192, 58, 71;
+      --co-purple: 164, 97, 200;
     }
 
 style(once='article-postbtn')
