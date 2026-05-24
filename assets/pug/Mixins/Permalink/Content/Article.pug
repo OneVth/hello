@@ -196,6 +196,23 @@ style(once='article')
           }
         }
 
+        /* Tistory global injection reset (Ray-pattern) */
+        blockquote,
+        q {
+          quotes: none;
+        }
+
+        blockquote::before,
+        blockquote::after,
+        q::before,
+        q::after {
+          content: none !important;
+        }
+
+        blockquote {
+          background-image: none !important;
+        }
+
         pre {
           code {
             @apply rounded-md p-4 text-sm leading-relaxed;
