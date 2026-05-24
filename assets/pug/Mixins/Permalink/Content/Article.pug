@@ -35,11 +35,16 @@ style(once='article')
         }
 
         ol[data-ke-list-type],
-        ul[data-ke-list-type] {
+        ul[data-ke-list-type],
+        ol:not([data-ke-list-type]),
+        ul:not([data-ke-list-type]) {
           @apply flex flex-col gap-y-1 pl-[1.1rem] my-5;
+          list-style: revert;
 
           ol[data-ke-list-type],
-          ul[data-ke-list-type] {
+          ul[data-ke-list-type],
+          ol:not([data-ke-list-type]),
+          ul:not([data-ke-list-type]) {
             @apply my-0 ml-6;
           }
         }
@@ -210,7 +215,8 @@ style(once='article')
         --co-purple: 111, 73, 174;
         --co-gray:   158, 158, 158;
 
-        blockquote.markdown-callout {
+        blockquote.markdown-callout,
+        blockquote[data-ke-style].markdown-callout {
           @apply my-4 font-sans text-base font-normal;
           padding: 12px 24px;
           border-radius: 2px;
@@ -240,49 +246,57 @@ style(once='article')
           }
         }
 
-        blockquote.markdown-callout-note {
+        blockquote.markdown-callout-note,
+        blockquote[data-ke-style].markdown-callout-note {
           border-left-color: rgb(var(--co-blue));
           background-color: rgba(var(--co-blue), 0.1);
           .callout-title { color: rgb(var(--co-blue)); &::before { content: '\f303'; } }
         }
 
-        blockquote.markdown-callout-tip {
+        blockquote.markdown-callout-tip,
+        blockquote[data-ke-style].markdown-callout-tip {
           border-left-color: rgb(var(--co-cyan));
           background-color: rgba(var(--co-cyan), 0.1);
           .callout-title { color: rgb(var(--co-cyan)); &::before { content: '\f0eb'; } }
         }
 
-        blockquote.markdown-callout-important {
+        blockquote.markdown-callout-important,
+        blockquote[data-ke-style].markdown-callout-important {
           border-left-color: rgb(var(--co-cyan));
           background-color: rgba(var(--co-cyan), 0.1);
           .callout-title { color: rgb(var(--co-cyan)); &::before { content: '\f06a'; } }
         }
 
-        blockquote.markdown-callout-warning {
+        blockquote.markdown-callout-warning,
+        blockquote[data-ke-style].markdown-callout-warning {
           border-left-color: rgb(var(--co-orange));
           background-color: rgba(var(--co-orange), 0.1);
           .callout-title { color: rgb(var(--co-orange)); &::before { content: '\f071'; } }
         }
 
-        blockquote.markdown-callout-danger {
+        blockquote.markdown-callout-danger,
+        blockquote[data-ke-style].markdown-callout-danger {
           border-left-color: rgb(var(--co-red));
           background-color: rgba(var(--co-red), 0.1);
           .callout-title { color: rgb(var(--co-red)); &::before { content: '\f06d'; } }
         }
 
-        blockquote.markdown-callout-example {
+        blockquote.markdown-callout-example,
+        blockquote[data-ke-style].markdown-callout-example {
           border-left-color: rgb(var(--co-purple));
           background-color: rgba(var(--co-purple), 0.1);
           .callout-title { color: rgb(var(--co-purple)); &::before { content: '\f0c3'; } }
         }
 
-        blockquote.markdown-callout-success {
+        blockquote.markdown-callout-success,
+        blockquote[data-ke-style].markdown-callout-success {
           border-left-color: rgb(var(--co-green));
           background-color: rgba(var(--co-green), 0.1);
           .callout-title { color: rgb(var(--co-green)); &::before { content: '\f058'; } }
         }
 
-        blockquote.markdown-callout-quote {
+        blockquote.markdown-callout-quote,
+        blockquote[data-ke-style].markdown-callout-quote {
           border-left-color: rgb(var(--co-gray));
           background-color: rgba(var(--co-gray), 0.1);
           .callout-title { color: rgb(var(--co-gray)); &::before { content: '\f10d'; } }
