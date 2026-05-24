@@ -224,6 +224,12 @@ style(once='article')
           background-color: rgba(var(--co-blue), 0.1);
           line-height: 1.75;
 
+          &::before,
+          &::after {
+            content: none !important;
+            display: none !important;
+          }
+
           .callout-title {
             @apply font-bold text-base;
             color: rgb(var(--co-blue));
