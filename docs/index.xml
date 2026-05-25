@@ -360,14 +360,14 @@
         <label>코드 하이라이팅(Light)</label>
         <description><![CDATA[ 코드 하이라이팅(Light) ]]></description>
         <type>STRING</type>
-        <default>xcode</default>
+        <default>github</default>
       </variable>
       <variable>
         <name>hljs-dark</name>
         <label>코드 하이라이팅(Dark)</label>
         <description><![CDATA[ 코드 하이라이팅(Dark) ]]></description>
         <type>STRING</type>
-        <default>vs2015</default>
+        <default>github-dark</default>
       </variable>
     </variablegroup>
   </variables>
