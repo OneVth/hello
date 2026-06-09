@@ -127,7 +127,11 @@ script(once='alpine-article-component').
       const $image = $imageWrap.querySelector('img')
       const width = $image.getAttribute('width') || $imageBlock.dataset.originWidth
 
-      return width > 1100 ? 1100 : width
+      const maxWidth = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue('--h-pem')
+      ) || 1100
+
+      return width > maxWidth ? maxWidth : width
     },
 
     /**
