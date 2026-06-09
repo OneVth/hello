@@ -51,11 +51,11 @@ module.exports = {
       },
       fontFamily: {
         sans: [
-          'SUIT',
+          'Pretendard', '"Apple SD Gothic Neo"', '"Noto Sans KR"',
           'ui-sans-serif', 'system-ui', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'
         ],
         mono: [
-          '"Source Code Pro"',
+          '"JetBrains Mono"', 'D2Coding', '"D2 Coding"', 'Consolas',
           ...defaultTheme.fontFamily.mono
         ]
       }
