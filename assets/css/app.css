@@ -162,3 +162,37 @@
 .dark .katex .mpunct {
   color: inherit;
 }
+
+/* ──────────────────────────────────────────────
+   Dark palette adapted from Flexcyon (MIT License, © 2024 bladeacer)
+   https://github.com/bladeacer/flexcyon
+   다크 모드 전용. 라이트 모드는 일절 영향 없음.
+   배경·텍스트·링크만 교체(헤더 색·코드 신택스는 후속).
+   html.dark 로 특정성을 올려 Tailwind utilities 위에서 이긴다.
+   ────────────────────────────────────────────── */
+
+html.dark {
+  --flexcyon-base-01: #14161c; /* 최외곽 배경 */
+  --flexcyon-base-02: #191d28; /* 주 배경·카드 */
+  --flexcyon-base-03: #24262c; /* 인터랙티브·hover */
+  --flexcyon-base-04: #4d566b; /* 보더 */
+  --flexcyon-base-05: #6f7685; /* muted 텍스트 */
+  --flexcyon-text-normal: #d3d5d3; /* 본문 텍스트 */
+  --flexcyon-external-link-color: #5a8fcd; /* 외부 링크 파랑 */
+}
+
+/* 배경 */
+html.dark .dark\:bg-h-800 { background-color: var(--flexcyon-base-01); }
+html.dark .dark\:bg-h-700 { background-color: var(--flexcyon-base-02); }
+html.dark .dark\:bg-h-600 { background-color: var(--flexcyon-base-03); }
+
+/* 텍스트 (h-200 제목·UI / h-300 본문 모두 단일 톤으로 통일) */
+html.dark .dark\:text-h-200 { color: var(--flexcyon-text-normal); }
+html.dark .dark\:text-h-300 { color: var(--flexcyon-text-normal); }
+html.dark .dark\:text-h-400 { color: var(--flexcyon-base-05); }
+
+/* 보더 (주의: #353638→#4d566b 명도 차 큼, 선이 도드라질 수 있음) */
+html.dark .dark\:border-h-600 { border-color: var(--flexcyon-base-04); }
+
+/* 링크 (Flexcyon 외부 링크 색. 기존 청색과 유사) */
+html.dark .dark\:text-h-blue { color: var(--flexcyon-external-link-color); }
