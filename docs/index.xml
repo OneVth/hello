@@ -332,21 +332,21 @@
             {"name":"screen", "label":"스크린", "value":"screen"}
           ]
         ]]></option>
-        <default>thumbnail</default>
+        <default>simple</default>
       </variable>
       <variable>
         <name>width</name>
         <label>너비</label>
         <description><![CDATA[ 너비 ]]></description>
         <type>STRING</type>
-        <default>720</default>
+        <default>900</default>
       </variable>
       <variable>
         <name>toc</name>
         <label>목차(Table Of Contents)</label>
         <description><![CDATA[ 목차(Table Of Contents) ]]></description>
         <type>BOOL</type>
-        <default>true</default>
+        <default>false</default>
       </variable>
       <variable>
         <name>scrollspy</name>
