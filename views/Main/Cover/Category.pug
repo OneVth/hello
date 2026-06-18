@@ -1,0 +1,115 @@
+//----------- CATEGORY GRID -----------//
+
++cover('category-grid-3')
+  +coverTitle()
+  +coverCategories()
+
++cover('category-grid-4')
+  +coverTitle()
+  +coverCategories()
+
+script.
+  document.addEventListener('alpine:init', () => Alpine.data('categoryGrid', () => ({
+    iconMap: {
+      'Embedded':       ['fa-solid', 'fa-microchip'],
+      'C':              ['fa-solid', 'fa-c'],
+      'Python':         ['fa-brands', 'fa-python'],
+      'Web':            ['fa-solid', 'fa-globe'],
+      'OS':             ['fa-solid', 'fa-gears'],
+      'Network':        ['fa-solid', 'fa-network-wired'],
+      'DSA':            ['fa-solid', 'fa-diagram-project'],
+      'DevTools':       ['fa-solid', 'fa-screwdriver-wrench'],
+      'Infra':          ['fa-solid', 'fa-server'],
+      'Projects':       ['fa-solid', 'fa-folder-open'],
+      'ComfyUI':        ['fa-solid', 'fa-wand-magic-sparkles'],
+      'Motion Capture': ['fa-solid', 'fa-person-running'],
+      'Coffee':         ['fa-solid', 'fa-mug-hot'],
+    },
+
+    init () {
+      const leaves = this._collectLeaves()
+      if (!leaves.length) return
+
+      const $cards = document.createElement('div')
+      $cards.className = 'category-cards'
+      leaves.forEach(({ name, href }) => $cards.appendChild(this._makeCard(name, href)))
+
+      this.$el.innerHTML = ''
+      this.$el.appendChild($cards)
+    },
+
+    _collectLeaves () {
+      const $list = this.$el.querySelector('.tt_category .category_list')
+      if (!$list) return []
+
+      const leaves = []
+      Array.from($list.children).forEach($li => {
+        const $sub = $li.querySelector('.sub_category_list')
+        if ($sub) {
+          $sub.querySelectorAll(':scope > li').forEach($s => {
+            const name = $s.querySelector('.c_name')?.textContent?.trim()
+            const href = $s.querySelector('a')?.getAttribute('href') ?? '#'
+            if (name) leaves.push({ name, href })
+          })
+        } else {
+          const name = $li.querySelector('.c_name')?.textContent?.trim()
+          const href = $li.querySelector('a')?.getAttribute('href') ?? '#'
+          if (name) leaves.push({ name, href })
+        }
+      })
+      return leaves
+    },
+
+    _makeCard (name, href) {
+      const $a = document.createElement('a')
+      $a.className = 'category-card'
+      $a.href = href
+
+      const $i = document.createElement('i')
+      $i.classList.add(...(this.iconMap[name] ?? ['fa-solid', 'fa-hashtag']))
+
+      const $span = document.createElement('span')
+      $span.textContent = name
+
+      $a.append($i, $span)
+      return $a
+    }
+  })))
+
+style
+  :postcss
+    .category-grid > .category-cards {
+      @apply grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4;
+    }
+
+    [data-cover-name=category-grid-3] .category-grid > .category-cards {
+      @apply lg:grid-cols-3 lg:gap-5;
+    }
+
+    [data-cover-name=category-grid-4] .category-grid > .category-cards {
+      @apply lg:grid-cols-4 lg:gap-4;
+    }
+
+    .category-card {
+      @apply flex flex-col items-center justify-center gap-y-3;
+      @apply py-6 px-4 rounded-xl;
+      @apply border border-solid border-h-300 dark:border-h-600;
+      @apply bg-h-200 dark:bg-h-700;
+      @apply no-underline transition-all duration-200;
+
+      i {
+        @apply text-2xl text-h-500 dark:text-h-400 transition-colors duration-200;
+      }
+
+      span {
+        @apply text-sm font-medium text-h-700 dark:text-h-300 text-center;
+      }
+
+      &:hover {
+        @apply -translate-y-1 shadow-lg border-h-blue;
+
+        i, span {
+          @apply text-h-blue;
+        }
+      }
+    }
