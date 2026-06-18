@@ -15,3 +15,7 @@ mixin coverPost(options={})
 mixin coverPosts(style)
   .posts(data-list-style=style)&attributes(attributes)
     block
+
+mixin coverCategories()
+  .category-grid.index-container(x-data='categoryGrid')&attributes(attributes)
+    | [##_category_list_##]
