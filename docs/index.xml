@@ -57,16 +57,6 @@
       <description>갤러리</description>
     </item>
     <item>
-      <name>category-grid-3</name>
-      <label>[카테고리] 카드 그리드 (3단)</label>
-      <description>카테고리 카드 그리드 (3단)</description>
-    </item>
-    <item>
-      <name>category-grid-4</name>
-      <label>[카테고리] 카드 그리드 (4단)</label>
-      <description>카테고리 카드 그리드 (4단)</description>
-    </item>
-    <item>
       <name>empty-line-1</name>
       <label>[빈 줄] 빈 줄 (1)</label>
       <description>[빈 줄] 빈 줄 (1)</description>
