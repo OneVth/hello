@@ -1,38 +1,41 @@
-s_index
-  section#category-grid(class='index-container py-8 lg:py-10')
-    - var categories = [
-    -   { name: 'Embedded', url: '/category/Embedded',           icon: 'fa-solid fa-microchip' },
-    -   { name: 'C',        url: '/category/Language/C',         icon: 'fa-solid fa-c' },
-    -   { name: 'OS',       url: '/category/OS',                 icon: 'fa-solid fa-gears' },
-    -   { name: 'Network',  url: '/category/Network',            icon: 'fa-solid fa-network-wired' },
-    -   { name: 'DSA',      url: '/category/DSA',                icon: 'fa-solid fa-diagram-project' },
-    -   { name: 'DevTools', url: '/category/DevTools',           icon: 'fa-solid fa-screwdriver-wrench' },
-    -   { name: 'Infra',    url: '/category/Infra',              icon: 'fa-solid fa-server' },
-    -   { name: 'Projects', url: '/category/Projects',           icon: 'fa-solid fa-folder-open' },
-    -   { name: 'ComfyUI',  url: '/category/Interests/ComfyUI', icon: 'fa-solid fa-wand-magic-sparkles' },
-    - ]
-    .category-grid-cards(
-      class='grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-3 lg:gap-5')
-      each cat in categories
-        a.category-card(href=cat.url)
-          i(class=cat.icon)
-          span= cat.name
+section#category-grid(
+  x-data="{ isHome: location.pathname === '/' }"
+  x-show='isHome'
+  style='display:none'
+  class='index-container py-8 lg:py-10')
+  - var categories = [
+  -   { name: 'Embedded', url: '/category/Embedded',           icon: 'fa-solid fa-microchip' },
+  -   { name: 'C',        url: '/category/Language/C',         icon: 'fa-solid fa-c' },
+  -   { name: 'OS',       url: '/category/OS',                 icon: 'fa-solid fa-gears' },
+  -   { name: 'Network',  url: '/category/Network',            icon: 'fa-solid fa-network-wired' },
+  -   { name: 'DSA',      url: '/category/DSA',                icon: 'fa-solid fa-diagram-project' },
+  -   { name: 'DevTools', url: '/category/DevTools',           icon: 'fa-solid fa-screwdriver-wrench' },
+  -   { name: 'Infra',    url: '/category/Infra',              icon: 'fa-solid fa-server' },
+  -   { name: 'Projects', url: '/category/Projects',           icon: 'fa-solid fa-folder-open' },
+  -   { name: 'ComfyUI',  url: '/category/Interests/ComfyUI', icon: 'fa-solid fa-wand-magic-sparkles' },
+  - ]
+  .category-grid-cards(
+    class='grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-3 lg:gap-5')
+    each cat in categories
+      a.category-card(href=cat.url)
+        i(class=cat.icon)
+        span= cat.name
 
-    style
-      :postcss
-        .category-card {
-          @apply flex flex-col items-center justify-center gap-y-3;
-          @apply py-6 px-4 rounded-xl;
-          @apply border border-solid border-h-300 dark:border-h-600;
-          @apply bg-h-200 dark:bg-h-700;
-          @apply no-underline transition-all duration-200;
+  style
+    :postcss
+      .category-card {
+        @apply flex flex-col items-center justify-center gap-y-3;
+        @apply py-6 px-4 rounded-xl;
+        @apply border border-solid border-h-300 dark:border-h-600;
+        @apply bg-h-200 dark:bg-h-700;
+        @apply no-underline transition-all duration-200;
 
-          i    { @apply text-2xl text-h-500 dark:text-h-400 transition-colors duration-200; }
-          span { @apply text-sm font-medium text-h-700 dark:text-h-300 text-center; }
+        i    { @apply text-2xl text-h-500 dark:text-h-400 transition-colors duration-200; }
+        span { @apply text-sm font-medium text-h-700 dark:text-h-300 text-center; }
 
-          &:hover {
-            @apply -translate-y-1 shadow-lg border-h-blue;
+        &:hover {
+          @apply -translate-y-1 shadow-lg border-h-blue;
 
-            i, span { @apply text-h-blue; }
-          }
+          i, span { @apply text-h-blue; }
         }
+      }
