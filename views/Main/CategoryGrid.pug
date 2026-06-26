@@ -4,19 +4,18 @@ section#category-grid(
   style='display:none'
   class='index-container py-8 lg:py-10')
   - var categories = [
-  -   { name: 'Embedded', url: '/category/Embedded',           icon: 'fa-solid fa-microchip' },
-  -   { name: 'C',        url: '/category/Language/C',         icon: 'fa-solid fa-c' },
-  -   { name: 'OS',       url: '/category/OS',                 icon: 'fa-solid fa-gears' },
   -   { name: 'Network',  url: '/category/Network',            icon: 'fa-solid fa-network-wired' },
-  -   { name: 'DSA',      url: '/category/DSA',                icon: 'fa-solid fa-diagram-project' },
-  -   { name: 'DevTools', url: '/category/DevTools',           icon: 'fa-solid fa-screwdriver-wrench' },
+  -   { name: 'Embedded', url: '/category/Embedded',           icon: 'fa-solid fa-microchip' },
   -   { name: 'Infra',    url: '/category/Infra',              icon: 'fa-solid fa-server' },
-  -   { name: 'Projects', url: '/category/Projects',           icon: 'fa-solid fa-folder-open' },
+  -   { name: 'OS',       url: '/category/OS',                 icon: 'fa-solid fa-gears' },
+  -   { name: 'C',        url: '/category/Language/C',         icon: 'fa-solid fa-c' },
   -   { name: 'ComfyUI',  url: '/category/Interests/ComfyUI', icon: 'fa-solid fa-wand-magic-sparkles' },
+  -   { name: 'DSA',      url: '/category/DSA',                icon: 'fa-solid fa-diagram-project' },
+  -   { name: 'Projects', url: '/category/Projects',           icon: 'fa-solid fa-folder-open' },
   - ]
-  h2(class='text-2xl font-bold mb-6 text-h-800 dark:text-h-200') 카테고리 목록
+  h2(class='text-2xl font-bold mb-6 text-h-800 dark:text-h-200') 주요 카테고리
   .category-grid-cards(
-    class='grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-3 lg:gap-5')
+    class='grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4 lg:grid-cols-4 lg:gap-5')
     each cat in categories
       a.category-card(href=cat.url)
         i(class=cat.icon)
