@@ -5,10 +5,17 @@ template(x-if='$store.header.show')
     .info(class='border-b border-solid border-b-h-300 dark:border-b-h-600 h-h min-h-[theme(spacing.h)] flex flex-col justify-center items-center text-center gap-y-1 text-h-800 dark:text-h-200')
       .tit(
         data-empty='검색어가 없어요 :('
-        x-init='$store.header.title = `[##_page_title_##]`'
+        x-init='$store.header.title = "[##_title_##]"'
         x-text='$store.header.title'
         class='font-bold text-3xl')
-      span.desc(class='font-bold text-sm') [##_title_##]
+      span.desc(
+        x-show="location.pathname === '/'"
+        style='display:none'
+        class='font-bold text-sm') 배우고, 정리하고, 공유합니다
+      span.desc(
+        x-show="location.pathname !== '/'"
+        style='display:none'
+        class='font-bold text-sm') [##_title_##]
 
 script.
   document.addEventListener('alpine:init', () => Alpine.store('header', {

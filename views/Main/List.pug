@@ -1,8 +1,12 @@
 s_list
   section#list(
     x-data='{ listStyle: "[##_list_style_##]" }'
-    x-init='$store.header.title = "[##_list_conform_##]"'
+    x-init='if (location.pathname !== "/") $store.header.title = "[##_list_conform_##]"'
     :data-list-style='listStyle')
+    h2(
+      x-show="location.pathname === '/'"
+      style='display:none'
+      class='text-xl font-bold mb-4 text-h-800 dark:text-h-200') 최신글
     s_list_rep
       +index('list_rep')
     s_list_empty
